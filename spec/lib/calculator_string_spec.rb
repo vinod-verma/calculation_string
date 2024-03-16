@@ -49,5 +49,11 @@ RSpec.describe CalculatorString do
         expect { subject.add("-1,2,-3,4,-5") }.to raise_error(ArgumentError, "Negative numbers not allowed: -1,-3,-5")
       end
     end
+
+    context "when given numbers larger than 1000" do
+      it "ignores numbers larger than 1000 in the calculation" do
+        expect(subject.add("2,1001")).to eq(2)
+      end
+    end
   end
 end
