@@ -15,6 +15,8 @@ class CalculatorString
       raise ArgumentError, "Negative numbers not allowed: #{negative_numbers.join(",")}"
     end
 
-    numbers_array.map(&:to_i).sum
+    valid_numbers = numbers_array.map(&:to_i).select { |num| num <= 1000 }
+
+    valid_numbers.sum
   end
 end
