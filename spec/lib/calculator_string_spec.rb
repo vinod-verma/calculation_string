@@ -1,3 +1,5 @@
+require_relative "../../lib/calculator_string.rb"
+
 RSpec.describe CalculatorString do
   describe "#add" do
     context "when given an empty string" do
