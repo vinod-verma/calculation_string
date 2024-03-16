@@ -31,5 +31,11 @@ RSpec.describe CalculatorString do
         expect(subject.add("1,2,3,4,5,6,7,8,9,10")).to eq(55)
       end
     end
+
+    context "when given numbers with new lines and commas" do
+      it "returns the sum of all numbers" do
+        expect(subject.add("1\n2,3")).to eq(6)
+      end
+    end
   end
 end
