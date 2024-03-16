@@ -9,7 +9,8 @@ class CalculatorString
       numbers = numbers.sub(/^\/\/(.+)\n/, "")
     end
 
-    numbers_array = numbers.split(/\n|#{delimiter}/)
+    delimiter_regex = Regexp.escape(delimiter)
+    numbers_array = numbers.split(/\n|#{delimiter_regex}/)
     negative_numbers = numbers_array.select {|num| num.to_i < 0}
     if negative_numbers.any?
       raise ArgumentError, "Negative numbers not allowed: #{negative_numbers.join(",")}"
