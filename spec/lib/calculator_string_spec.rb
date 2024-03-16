@@ -55,5 +55,11 @@ RSpec.describe CalculatorString do
         expect(subject.add("2,1001")).to eq(2)
       end
     end
+
+    context 'when given a custom delimiter of any length' do
+      it 'returns the sum of numbers using the custom delimiter' do
+        expect(subject.add("//[***]\n1***2***3")).to eq(6)
+      end
+    end
   end
 end
