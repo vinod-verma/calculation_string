@@ -5,11 +5,11 @@ class CalculatorString
     delimiter = ","
     custom_delimiter = numbers.match(/^\/\/(.+)\n/)
     if custom_delimiter
-      delimiter = custom_delimiter[1][1..-2]
+      delimiter = custom_delimiter[1].scan(/\[(.*?)\]/).flatten.map {|d| Regexp.escape(d)}.join("|")
       numbers = numbers.sub(/^\/\/(.+)\n/, "")
     end
 
-    delimiter_regex = Regexp.escape(delimiter)
+    delimiter_regex = Regexp.new(delimiter)
     numbers_array = numbers.split(/\n|#{delimiter_regex}/)
     negative_numbers = numbers_array.select {|num| num.to_i < 0}
     if negative_numbers.any?
