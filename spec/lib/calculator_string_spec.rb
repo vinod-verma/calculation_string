@@ -19,5 +19,11 @@ RSpec.describe CalculatorString do
         expect(subject.add("1,5")).to eq(6)
       end
     end
+
+    context "when given multiple numbers seperated by commas in a string" do
+      it "returns the sum of all numbers" do
+        expect(subject.add("1,2,3,4,5")).to eq(15)
+      end
+    end
   end
 end
